@@ -1,0 +1,43 @@
+{
+  "name": "hexo-generator-mip",
+  "version": "0.0.1",
+  "description": "统一处理 Hexo 模板中的 MIP 标签",
+  "main": "index.js",
+  "scripts": {
+    "preversion": "npm run lint",
+    "postversion": "git push origin master && git push origin --tags",
+    "lint": "fecs check index.js lib/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuexb/hexo-generator-mip.git"
+  },
+  "keywords": [
+    "hexo",
+    "mip"
+  ],
+  "author": "xuexb <fe.xiaowu@gmail.com>",
+  "contributors": [
+    {
+      "name": "yugasun",
+      "email": "yuga.sun.bj@gmail.com"
+    },
+    {
+      "name": "xuexb",
+      "email": "fe.xiaowu@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xuexb/hexo-generator-mip/issues"
+  },
+  "homepage": "https://github.com/xuexb/hexo-generator-mip#readme",
+  "dependencies": {
+    "clean-css": "^4.1.9",
+    "extend": "^3.0.1",
+    "glob": "^7.1.2"
+  },
+  "devDependencies": {
+    "fecs": "^1.4.1"
+  }
+}
