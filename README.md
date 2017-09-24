@@ -44,6 +44,12 @@ mip:
 
 [MIP img 标签文档](https://www.mipengine.org/examples/mip/mip-img.html)
 
+### 处理 canonical
+
+在主题模板内 `<head>` 标签结束前使用 `mipcanonical()` 引入.
+
+感谢 [@HyunSeob/hexo-auto-canonical](https://github.com/HyunSeob/hexo-auto-canonical)
+
 ## License
 
 [MIT](./LICENSE)

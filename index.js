@@ -10,3 +10,4 @@
 require('./lib/style.js')(hexo);
 require('./lib/a.js')(hexo);
 require('./lib/img.js')(hexo);
+require('./lib/canonical.js')(hexo);
