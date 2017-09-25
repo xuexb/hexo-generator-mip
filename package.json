@@ -1,6 +1,6 @@
 {
   "name": "hexo-generator-mip",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "统一处理 Hexo 模板中的 MIP 标签",
   "main": "index.js",
   "scripts": {
