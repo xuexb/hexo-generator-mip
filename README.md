@@ -2,6 +2,8 @@
 
 统一处理 Hexo 模板中的 MIP 标签
 
+> 注意: [hexo-generator-mip](https://github.com/xuexb/hexo-generator-mip) 模块会处理 MIP 规范的标签, 如抽离 `<style>`、处理 `<a>` 标签、处理 `<img>` 标签, 如果不使用 Hexo MIP 相关模板, 请不要安装该模块
+
 ## 使用
 
 安装
@@ -18,7 +20,7 @@ mip:
     # 是否开启 css 压缩, 默认为 false
     cssmin: false
 
-    # 指定加载的文件, 以 `souce/css/` 为基础路径
+    # 指定加载的文件, 以 `souce/css/` 为基础路径, 不配置则加载 `source/css` 下所有样式, 忽略以 `_` 开头的文件.
     css:
         - reset.css
         - demo.css
@@ -26,7 +28,7 @@ mip:
 
 ### 处理 css
 
-会把主题目录下 `souce/css/**/*.css` 打包成一个 `<style mip-custom>` 标签, 会忽略以 `_` 开头的文件.
+如果配置了 `mip.css` 则直接加载配置的文件, 否则会加载主题目录下 `souce/css/**/*.css`, 最终打包成一个 `<style mip-custom>` 标签, 忽略以 `_` 开头的文件.
 
 在主题模板内 `<head>` 标签结束前使用 `mipcss()` 引入.
 
