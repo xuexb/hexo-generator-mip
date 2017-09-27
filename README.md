@@ -19,7 +19,7 @@ mip:
 配置名称 | 描述 | 默认值
 --- | --- | ---
 `mip.enable` | 是否开启 MIP 规范处理 | `false`
-`mip.css` | 加载指定的样式文件, 以 `主题目录/souce/css/` 为基础路径 | `无`, 如果没有配置, 默认加载 `souce/css/**/*.css` 忽略以 `_` 开头的文件
+`mip.css` | 指定加载的样式文件, 以 `主题目录/souce/css/` 为基础路径<br>如果没有配置, 默认加载 `souce/css/**/*.css` 忽略以 `_` 开头的文件 | `''`
 `mip.cssmin` | 是否开启样式压缩 | `true`
 `mip.canonical` | 替换 canonical 地址 | `''`
 
