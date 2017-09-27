@@ -36,7 +36,7 @@ mip:
 
 ### 处理 a 标签
 
-统一替换页面中的 `<a>` 标签, 如果是当前网站的, 则添加 `data-type="mip"`. 
+统一替换页面中的 `<a>` 标签, 如果是当前网站的, 则添加 `data-type="mip"`.
 
 [MIP a 标签文档](https://www.mipengine.org/examples/mip-extensions/mip-link.html)
 
@@ -48,7 +48,17 @@ mip:
 
 ### 处理 canonical
 
-在主题模板内 `<head>` 标签结束前使用 `mipcanonical()` 引入.
+在主题模板内 `<head>` 标签结束前使用 `mipcanonical()` 引入. 如果需要自定义 canonical 的域名或者路径前缀 , 可以配置:
+
+``` yaml
+# 自定义域名
+mip:
+    canonical: 'https://mip.example.com'
+
+# 自定义路径
+mip:
+    canonical: 'https://example.com/mip'
+```
 
 感谢 [@HyunSeob/hexo-auto-canonical](https://github.com/HyunSeob/hexo-auto-canonical)
 
