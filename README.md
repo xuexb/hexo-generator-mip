@@ -27,7 +27,7 @@ mip:
 
 > [MIP style 标签文档](https://www.mipengine.org/doc/2-tech/1-mip-html.html)
 
-如果配置了 `mip.css` 则直接加载配置的文件, 否则会加载主题目录下 `souce/css/**/*.css`, 最终打包成一个 `<style mip-custom>` 标签, 忽略以 `_` 开头的文件. 可以按顺序加载指定文件, 如:
+如果配置了 `mip.css` 则直接加载配置的文件, 否则会加载主题目录下 `souce/css/**/*.css`, 忽略以 `_` 开头的文件. 最终会插入到 `</head>` 标签结束前. 按顺序加载指定文件, 如:
 
 ``` yaml
 mip:
@@ -35,8 +35,6 @@ mip:
     reset.css
     main.css
 ```
-
-在主题模板内 `<head>` 标签结束前使用 `mipcss()` 引入.
 
 ### 处理 a 标签
 
@@ -48,7 +46,7 @@ mip:
 
 > [MIP img 标签文档](https://www.mipengine.org/examples/mip/mip-img.html)
 
-根据 MIP 规范, 图片必须设置 `width` 和 `height` , 统一替换页面中的 `<img>` 标签为 `<mip-img>` .
+统一替换页面中的 `<img>` 标签为 `<mip-img>` , 根据 MIP 规范, 图片必须设置 `width` 和 `height` .
 
 ### 处理 canonical
 
