@@ -6,7 +6,7 @@
   "scripts": {
     "preversion": "npm run lint",
     "postversion": "git push origin master && git push origin --tags",
-    "lint": "fecs check index.js lib/"
+    "lint": "fecs check index.js config.js lib/"
   },
   "repository": {
     "type": "git",

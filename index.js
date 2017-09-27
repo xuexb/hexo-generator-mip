@@ -7,8 +7,9 @@
 
 /* global hexo */
 
-var getConfig = require('./lib/config');
-var config = getConfig(hexo);
+var extend = require('extend');
+var defaults = require('./config');
+var config = extend({}, defaults, hexo.theme.config.mip, hexo.config.mip);
 
 if (config.enable) {
     require('./lib/style.js')(hexo, config);
