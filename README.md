@@ -2,9 +2,7 @@
 
 统一处理 Hexo 模板中的 MIP 标签
 
-## 使用
-
-安装
+## 安装
 
 ``` bash
 npm install --save hexo-generator-mip
