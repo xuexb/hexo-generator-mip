@@ -7,7 +7,10 @@
 
 /* global hexo */
 
-if (hexo.theme.config.mip || hexo.config.mip) {
+var getConfig = require('./lib/config');
+var config = getConfig(hexo);
+
+if (config.enable) {
     require('./lib/style.js')(hexo);
     require('./lib/fix-a-href.js')(hexo);
     require('./lib/a.js')(hexo);
