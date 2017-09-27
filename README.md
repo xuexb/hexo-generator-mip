@@ -17,8 +17,8 @@ npm install --save hexo-generator-mip
 ``` yaml
 # _config.yml
 mip:
-    # 是否开启 css 压缩, 默认为 false
-    cssmin: false
+    # 是否开启 css 压缩, 默认为 true
+    cssmin: true
 
     # 指定加载的文件, 以 `souce/css/` 为基础路径, 不配置则加载 `source/css` 下所有样式, 忽略以 `_` 开头的文件.
     css:
