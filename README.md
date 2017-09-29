@@ -32,8 +32,8 @@ mip:
 ``` yaml
 mip:
   css:
-    reset.css
-    main.css
+    - reset.css
+    - main.css
 ```
 
 ### 处理 a 标签
