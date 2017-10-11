@@ -52,7 +52,7 @@ mip:
 
 > [MIP canonical 规范文档](https://www.mipengine.org/doc/2-tech/5-show-your-page.html) , 思路来自 [@HyunSeob/hexo-auto-canonical](https://github.com/HyunSeob/hexo-auto-canonical)
 
-在主题模板内 `<head>` 标签结束前使用 `mipcanonical()` 引入. 如果需要自定义 canonical 的域名或者路径前缀 , 可以配置:
+在主题模板内 `<head>` 标签结束前使用 `mipcanonical(page)` 引入. 如果需要自定义 canonical 的域名或者路径前缀 , 可以配置:
 
 ``` yaml
 # 自定义域名
