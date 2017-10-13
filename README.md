@@ -72,6 +72,8 @@ mip:
 
 ## contributors
 
+> [用户贡献指南](.github/CONTRIBUTING.md)
+
 - [@yugasun](https://github.com/yugasun/)
 - [@xuexb](https://github.com/xuexb/)
 
