@@ -2,6 +2,12 @@
 
 统一处理 Hexo 模板中的 MIP 标签
 
+[![NPM Version](https://img.shields.io/npm/v/hexo-generator-mip.svg)](https://www.npmjs.com/package/hexo-generator-mip)
+[![NPM Downloads](https://img.shields.io/npm/dm/hexo-generator-mip.svg)](https://www.npmjs.com/package/hexo-generator-mip)
+[![Linux Build](https://img.shields.io/travis/xuexb/hexo-generator-mip/master.svg?label=linux)](https://travis-ci.org/xuexb/hexo-generator-mip)
+[![Windows Build](https://img.shields.io/appveyor/ci/xuexb/hexo-generator-mip/master.svg?label=windows)](https://ci.appveyor.com/project/xuexb/hexo-generator-mip)
+[![Test Coverage](https://img.shields.io/coveralls/xuexb/hexo-generator-mip/master.svg)](https://coveralls.io/r/xuexb/hexo-generator-mip?branch=master)
+
 ## 安装
 
 ``` bash
