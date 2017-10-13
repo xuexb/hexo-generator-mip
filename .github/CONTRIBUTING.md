@@ -21,6 +21,8 @@ npm run test:watch
 npm run test:cov
 ```
 
+项目使用 [mochajs](http://mochajs.org/) 提供测试环境，使用 [chaijs](http://chaijs.com/api/bdd/) 提供 `BDD` 风格的断言，使用 [sinonjs](http://sinonjs.org/) 提供测试桩。
+
 ### 代码风格
 
 代码使用 [fecs](http://fecs.baidu.com/) 规范，在提交代码之前，一定要使用 `npm run lint` 检查自己的代码风格规范是否符合项目的规范。当代码风格完全正常后，就可以继续你的提交了！
