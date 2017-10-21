@@ -4,12 +4,28 @@
   "description": "统一处理 Hexo 模板中的 MIP 标签",
   "main": "index.js",
   "scripts": {
+    "commitmsg": "validate-commit-msg",
     "preversion": "npm run lint",
     "postversion": "git push origin master && git push origin --tags",
     "lint": "fecs check index.js config.js lib/ test/ ./*.js",
     "test": "mocha --reporter spec --timeout 5000 --recursive test/",
     "test:cov": "istanbul cover node_modules/mocha/bin/_mocha -- -t 5000 --recursive  -R spec test/",
     "test:watch": "npm test -- --watch"
+  },
+  "config": {
+    "validate-commit-msg": {
+      "types": [
+        "feat",
+        "fix",
+        "docs",
+        "style",
+        "refactor",
+        "test",
+        "chore",
+        "revert",
+        "release"
+      ]
+    }
   },
   "repository": {
     "type": "git",
@@ -48,6 +64,8 @@
     "mkdirp": "^0.5.1",
     "mocha": "^4.0.1",
     "sinon": "^4.0.1",
-    "sinon-chai": "^2.14.0"
+    "sinon-chai": "^2.14.0",
+    "husky": "^0.14.3",
+    "validate-commit-msg": "^2.14.0"
   }
 }

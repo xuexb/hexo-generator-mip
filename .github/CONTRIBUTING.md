@@ -27,6 +27,10 @@ npm run test:cov
 
 代码使用 [fecs](http://fecs.baidu.com/) 规范，在提交代码之前，一定要使用 `npm run lint` 检查自己的代码风格规范是否符合项目的规范。当代码风格完全正常后，就可以继续你的提交了！
 
+### 提交信息规范
+
+参考 MIP 的 [提交信息规范](https://github.com/mipengine/spec/blob/master/commit-message-spec.md)
+
 ### 后记
 
 开源是神圣的，我们期待您的参与，也感谢您的参与！
