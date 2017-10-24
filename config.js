@@ -7,6 +7,7 @@
 
 module.exports = {
     css: null,
+    cssmap: {},
     cssmin: true,
     canonical: '',
     enable: false
