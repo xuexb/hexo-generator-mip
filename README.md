@@ -33,7 +33,13 @@ mip:
 
 > [MIP style 标签文档](https://www.mipengine.org/doc/2-tech/1-mip-html.html)
 
-如果配置了 `mip.css` 则直接加载配置的文件, 否则会加载主题目录下 `souce/css/**/*.css`, 忽略以 `_` 开头的文件. 最终会插入到 `</head>` 标签结束前. 按顺序加载指定文件, 如:
+#### 1. 默认全部加载
+
+默认情况下将加载主题目录下 `souce/css/**/!(_*).css` 的文件，并合并添加到页面的 `<head>` 标签结束前。
+
+#### 2. 配置加载文件的名单
+
+配置 `mip.css` 则直接加载配置的文件, 如:
 
 ``` yaml
 mip:
@@ -41,6 +47,24 @@ mip:
     - reset.css
     - main.css
 ```
+
+#### 3. 主动调用 mipcss 函数加载指定文件 - v0.4.0 新增
+
+可以主动在模板内加载指定的文件，使用 `{{ mipcss(file1 [, file2]) }}` ，以主题目录下 `souce/css/` 为基础路径加载，如：
+
+```
+# page.swig
+<head>
+    {{ mipcss('reset.css', 'page.css') }}
+</head>
+
+# index.swig
+<head>
+    {{ mipcss('reset.css', 'index.css') }}
+</head>
+```
+
+> 注意：使用该方式加载样式后，将忽略 **#1 默认全部加载** 和 **#2 主动调用 mipcss 函数加载指定文件** ，因为页面已经存在 `<style mip-custom>` 标签
 
 ### 处理 a 标签
 
