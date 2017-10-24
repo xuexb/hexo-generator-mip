@@ -84,7 +84,7 @@ describe('style.js', function () {
     });
 
     it('register helper', function () {
-        expect(helper).to.have.been.calledOnce;
+        expect(helper).to.have.been.called;
         expect(helper).to.have.been.calledWith('mipcss');
         expect(helper.getCall(0).args[1]).to.be.a('function');
         expect(helper.getCall(0).args[1]()).to.be.a('string').and.empty;
@@ -94,7 +94,7 @@ describe('style.js', function () {
         expect(callback).to.be.a('function');
     });
 
-    it('has <style mip-custom>', function () {
+    it('<head> has <style mip-custom>', function () {
         var head = [
             '<head>',
                 '<style mip-custom>body {}</style>',
@@ -102,6 +102,31 @@ describe('style.js', function () {
         ].join('');
 
         expect(callback(head)).to.equal(head);
+    });
+
+    it('<body> has <style mip-custom>', function () {
+        mock('body {height: 0;}');
+
+        register({
+            theme_dir: mockBase
+        });
+
+        var head = [
+            '<head>',
+            '</head>',
+            '<body>',
+                '<style mip-custom>body {}</style>',
+            '</body>'
+        ].join('');
+
+        expect(callback(head)).to.equal([
+            '<head>',
+                '<style mip-custom>body {height: 0;}</style>',
+            '</head>',
+            '<body>',
+                '<style mip-custom>body {}</style>',
+            '</body>'
+        ].join(''));
     });
 
     describe('the default file is loaded under `config.theme_dir`', function () {
