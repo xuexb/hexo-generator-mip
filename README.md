@@ -25,7 +25,7 @@ mip:
 配置名称 | 描述 | 默认值
 --- | --- | ---
 `mip.enable` | 是否开启 MIP 规范处理 | `false`
-`mip.css` | 指定加载的样式文件, 以 `主题目录/souce/css/` 为基础路径<br>如果没有配置, 默认加载 `souce/css/**/*.css` 忽略以 `_` 开头的文件 | `''`
+`mip.css` | 指定加载的样式文件，以 `主题目录/souce/css/` 为基础路径<br>如果没有配置，默认加载 `souce/css/**/*.css` 忽略以 `_` 开头的文件 | `''`
 `mip.cssmin` | 是否开启样式压缩 | `true`
 `mip.canonical` | 替换 canonical 地址 | `''`
 
@@ -39,7 +39,7 @@ mip:
 
 #### 2. 配置加载文件的名单
 
-配置 `mip.css` 则直接加载配置的文件, 如:
+配置 `mip.css` 则直接加载配置的文件，如：
 
 ``` yaml
 mip:
@@ -64,25 +64,25 @@ mip:
 </head>
 ```
 
-> 注意：使用该方式加载样式后，将忽略 **#1 默认全部加载** 和 **#2 主动调用 mipcss 函数加载指定文件** ，因为页面已经存在 `<style mip-custom>` 标签
+> 注意：使用该方式加载样式后，将忽略 **#1 默认全部加载** 和 **#2 主动调用 mipcss 函数加载指定文件** ，因为页面已经存在 `<style mip-custom>` 标签。
 
 ### 处理 a 标签
 
 > [MIP a 标签文档](https://www.mipengine.org/examples/mip-extensions/mip-link.html)
 
-统一替换页面中的 `<a>` 标签, 如果是当前网站的, 则添加 `data-type="mip"`.
+统一替换页面中的 `<a>` 标签，如果是当前网站的，则添加 `data-type="mip"` 。
 
 ### 处理 img 链接
 
 > [MIP img 标签文档](https://www.mipengine.org/examples/mip/mip-img.html)
 
-统一替换页面中的 `<img>` 标签为 `<mip-img>` , 根据 MIP 规范, 图片必须设置 `width` 和 `height` .
+统一替换页面中的 `<img>` 标签为 `<mip-img>` ，根据 MIP 规范，图片必须设置 `width` 和 `height` 。
 
 ### 处理 canonical
 
-> [MIP canonical 规范文档](https://www.mipengine.org/doc/2-tech/5-show-your-page.html) , 思路来自 [@HyunSeob/hexo-auto-canonical](https://github.com/HyunSeob/hexo-auto-canonical)
+> [MIP canonical 规范文档](https://www.mipengine.org/doc/2-tech/5-show-your-page.html) ，思路来自 [@HyunSeob/hexo-auto-canonical](https://github.com/HyunSeob/hexo-auto-canonical)
 
-在主题模板内 `<head>` 标签结束前使用 `mipcanonical(page)` 引入. 如果需要自定义 canonical 的域名或者路径前缀 , 可以配置:
+在主题模板内 `<head>` 标签结束前使用 `mipcanonical(page)` 引入。如果需要自定义 canonical 的域名或者路径前缀，可以配置：
 
 ``` yaml
 # 自定义域名
