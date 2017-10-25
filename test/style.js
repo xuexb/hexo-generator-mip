@@ -23,7 +23,7 @@ describe('style.js', function () {
     var styleFilePath = path.resolve(mockBase, 'source/css');
     var HTML_TEMPLATE = [
         '<!doctype html>',
-        '<html>',
+        '<html mip>',
             '<head>',
                 '<title>test</title>',
             '</head>',
@@ -194,12 +194,56 @@ describe('style.js', function () {
 
         it('<head> has <style mip-custom>', function () {
             var head = [
+                '<html mip>',
                 '<head>',
                 '<style mip-custom>body {}</style>',
                 '</head>'
             ].join('');
 
             expect(callback(head)).to.equal(head);
+        });
+
+        describe('isMip', function () {
+            it('true', function () {
+                mock('body {height: 0;}');
+
+                register({
+                    theme_dir: mockBase
+                });
+
+                var head = [
+                    '<html mip>',
+                    '<head>',
+                    '</head>'
+                ].join('');
+
+                expect(callback(head)).to.equal([
+                    '<html mip>',
+                    '<head>',
+                    '<style mip-custom>body {height: 0;}</style>',
+                    '</head>'
+                ].join(''));
+            });
+
+            it('false', function () {
+                mock('body {height: 0;}');
+
+                register({
+                    theme_dir: mockBase
+                });
+
+                var head = [
+                    '<html>',
+                    '<head>',
+                    '</head>'
+                ].join('');
+
+                expect(callback(head)).to.equal([
+                    '<html>',
+                    '<head>',
+                    '</head>'
+                ].join(''));
+            });
         });
 
         it('<body> has <style mip-custom>', function () {
@@ -210,6 +254,7 @@ describe('style.js', function () {
             });
 
             var head = [
+                '<html mip>',
                 '<head>',
                 '</head>',
                 '<body>',
@@ -218,6 +263,7 @@ describe('style.js', function () {
             ].join('');
 
             expect(callback(head)).to.equal([
+                '<html mip>',
                 '<head>',
                 '<style mip-custom>body {height: 0;}</style>',
                 '</head>',
@@ -389,7 +435,7 @@ describe('style.js', function () {
 
                 var result = callback([
                     '<!doctype html>',
-                    '<html>',
+                    '<html mip>',
                         '<head>',
                             '<title>test</title>',
                             '<noscript>test</noscript>',
@@ -412,7 +458,7 @@ describe('style.js', function () {
 
                 var result = callback([
                     '<!doctype html>',
-                    '<html>',
+                    '<html mip>',
                         '<head>',
                             '<title>test</title>',
                         '</head>',

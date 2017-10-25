@@ -51,6 +51,7 @@ describe('fix-a-href.js', function () {
         register();
 
         var result = callback([
+            '<html mip>',
             '<a href="#">1</a>',
             '<A>1</A>',
             '<a',
@@ -67,6 +68,7 @@ describe('fix-a-href.js', function () {
         ].join(''));
 
         expect(result).to.equal([
+            '<html mip>',
             '<a href="#">1</a>',
             '<A href="#">1</A>',
             '<a',
@@ -81,5 +83,28 @@ describe('fix-a-href.js', function () {
                 '<a   href="test"></a>',
             '</div>'
         ].join(''));
+    });
+
+    describe('isMip', function () {
+        it('true', function () {
+            var head = [
+                '<html mip>',
+                '<a>2</a>'
+            ].join('');
+
+            expect(callback(head)).to.equal([
+                '<html mip>',
+                '<a href="#">2</a>'
+            ].join(''));
+        });
+
+        it('false', function () {
+            var head = [
+                '<html>',
+                '<a>2</a>'
+            ].join('');
+
+            expect(callback(head)).to.equal(head);
+        });
     });
 });

@@ -19,7 +19,7 @@ describe('img.js', function () {
     /**
      * 注册 filter
      *
-     * @param  {Ojbect | undefined} data 注入数据
+     * @param  {Object | undefined} data 注入数据
      * @param {Object | undefined} config 注入配置数据
      */
     var register = function (data, config) {
@@ -51,6 +51,7 @@ describe('img.js', function () {
         register();
 
         var result = callback([
+            '<html mip>',
             '<img>',
             '<img/>',
             '<IMG src="1"   / >',
@@ -74,6 +75,7 @@ describe('img.js', function () {
         ].join('\n'));
 
         expect(result).to.equal([
+            '<html mip>',
             '<mip-img></mip-img>',
             '<mip-img></mip-img>',
             '<mip-img src="1"></mip-img>',
@@ -93,5 +95,24 @@ describe('img.js', function () {
                 '<mip-img src="https://xuexb.com/5.png"></mip-img>',
             '</div>'
         ].join('\n'));
+    });
+
+    describe('isMip', function () {
+        it('true', function () {
+            var head = [
+                '<html mip>',
+                '<img>'
+            ].join('');
+
+            expect(callback(head)).to.equal([
+                '<html mip>',
+                '<mip-img>',
+                '</mip-img>'
+            ].join(''));
+        });
+
+        it('false', function () {
+            expect(callback('<img>')).to.equal('<img>');
+        });
     });
 });

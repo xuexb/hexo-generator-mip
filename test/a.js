@@ -65,6 +65,7 @@ describe('a.js', function () {
     describe('replace a tag', function () {
         it('not find href', function () {
             var str = [
+                '<html mip>',
                 '<div>',
                     '<a class="test"></a>',
                 '</div>',
@@ -89,6 +90,7 @@ describe('a.js', function () {
 
         it('not match base url', function () {
             var str = [
+                '<html mip>',
                 '<div>',
                     '<a href="https://www.xuexb.com" class="test"></a>',
                 '</div>',
@@ -110,6 +112,7 @@ describe('a.js', function () {
 
         it('a has data-type', function () {
             var str = [
+                '<html mip>',
                 '<div>',
                     '<a href="https://xuexb.com" data-type="mip" class="test"></a>',
                 '</div>',
@@ -131,6 +134,7 @@ describe('a.js', function () {
 
         it('replace success', function () {
             var str = [
+                '<html mip>',
                 '<div>',
                     '<a href="https://xuexb.com" class="test"></a>',
                 '</div>',
@@ -145,6 +149,7 @@ describe('a.js', function () {
                 }
             });
             expect(callback(str)).to.equal([
+                '<html mip>',
                 '<div>',
                     '<a data-type="mip" href="https://xuexb.com" class="test"></a>',
                 '</div>',
@@ -156,6 +161,7 @@ describe('a.js', function () {
 
         it('relative url', function () {
             var str = [
+                '<html mip>',
                 '<div>',
                     '<a href="/index.html"></a>',
                 '</div>',
@@ -173,6 +179,7 @@ describe('a.js', function () {
                 }
             });
             expect(callback(str)).to.equal([
+                '<html mip>',
                 '<div>',
                     '<a data-type="mip" href="/index.html"></a>',
                 '</div>',
@@ -187,6 +194,7 @@ describe('a.js', function () {
 
         it('xml url', function () {
             var str = [
+                '<html mip>',
                 '<div>',
                     '<a href="https://xuexb.com/a.xml"></a>',
                 '</div>',
@@ -201,6 +209,7 @@ describe('a.js', function () {
                 }
             });
             expect(callback(str)).to.equal([
+                '<html mip>',
                 '<div>',
                     '<a href="https://xuexb.com/a.xml"></a>',
                 '</div>',
@@ -208,6 +217,47 @@ describe('a.js', function () {
                     '<a data-type="mip" href="https://xuexb.com/a.html"></a>',
                 '</div>'
             ].join(''));
+        });
+    });
+
+    describe('isMip', function () {
+        it('true', function () {
+            var str = [
+                '<html mip>',
+                '<div>',
+                    '<a href="https://xuexb.com" class="test"></a>',
+                '</div>'
+            ].join('');
+
+            register({
+                config: {
+                    url: 'https://xuexb.com'
+                }
+            });
+
+            expect(callback(str)).to.equal([
+                '<html mip>',
+                '<div>',
+                    '<a data-type="mip" href="https://xuexb.com" class="test"></a>',
+                '</div>'
+            ].join(''));
+        });
+
+        it('false', function () {
+            var str = [
+                '<html>',
+                '<div>',
+                    '<a href="https://xuexb.com" class="test"></a>',
+                '</div>'
+            ].join('');
+
+            register({
+                config: {
+                    url: 'https://xuexb.com'
+                }
+            });
+
+            expect(callback(str)).to.equal(str);
         });
     });
 });
