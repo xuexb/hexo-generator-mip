@@ -18,6 +18,8 @@ describe('isMip.js', function () {
         '<html lang="zh-cn" mip>': true,
         '<html    lang="zh-cn"mip>': true,
         '<html    lang="zh-cn"\n mip>': true,
+        '<!DOCTYPE html><HTML MIP     ><head>': true,
+        '<!DOCTYPE html><HTML mip     ><head>': true,
         '<!DOCTYPE html><html mip     ><head>': true
     };
 
