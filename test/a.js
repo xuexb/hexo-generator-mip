@@ -9,6 +9,7 @@ var sinonChai = require('sinon-chai');
 var exec = require('../lib/a');
 var extend = require('extend');
 var expect = chai.expect;
+var defaults = require('../config');
 
 chai.use(sinonChai);
 
@@ -20,8 +21,9 @@ describe('a.js', function () {
      * 注册 filter
      *
      * @param  {Ojbect | undefined} data 注入数据
+     * @param  {Object | undefined} config 注入的配置数据
      */
-    var register = function (data) {
+    var register = function (data, config) {
         var hexo = {};
         hexo.extend = {};
         hexo.extend.filter = {};
@@ -30,7 +32,7 @@ describe('a.js', function () {
         extend(hexo, data);
 
         spy = sinon.spy(hexo.extend.filter, 'register');
-        exec(hexo);
+        exec(hexo, extend({}, defaults, config));
         callback = spy.getCall(0).args[1];
     };
 
@@ -216,6 +218,37 @@ describe('a.js', function () {
                 '<div>',
                     '<a data-type="mip" href="https://xuexb.com/a.html"></a>',
                 '</div>'
+            ].join(''));
+        });
+
+        it('exclude', function () {
+            var str = [
+                '<html mip>',
+                '<a href="https://xuexb.com/"></a>',
+                '<a href="https://xuexb.com"></a>',
+                '<a href="https://xuexb.com/index.html"></a>',
+                '<a href="https://xuexb.com/index.html?a=1"></a>',
+                '<a href="https://xuexb.com/index.html?a=1&b=2#hash"></a>',
+                '<a href="https://xuexb.cn"></a>'
+            ].join('');
+
+            register({
+                config: {
+                    url: 'https://xuexb.com'
+                }
+            }, {
+                exclude: [
+                    'https://xuexb.com/index.html'
+                ]
+            });
+            expect(callback(str)).to.equal([
+                '<html mip>',
+                '<a data-type="mip" href="https://xuexb.com/"></a>',
+                '<a data-type="mip" href="https://xuexb.com"></a>',
+                '<a href="https://xuexb.com/index.html"></a>',
+                '<a href="https://xuexb.com/index.html?a=1"></a>',
+                '<a href="https://xuexb.com/index.html?a=1&b=2#hash"></a>',
+                '<a href="https://xuexb.cn"></a>'
             ].join(''));
         });
     });

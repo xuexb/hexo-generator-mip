@@ -9,5 +9,6 @@ module.exports = {
     css: null,
     cssmin: true,
     canonical: '',
-    enable: false
+    enable: false,
+    exclude: []
 };

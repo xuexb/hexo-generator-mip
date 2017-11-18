@@ -23,4 +23,8 @@ describe('config.js', function () {
     it('.enable', function () {
         expect(config.enable).to.be.false;
     });
+
+    it('.exclude', function () {
+        expect(config.exclude).to.be.a('array').and.to.be.empty;
+    });
 });

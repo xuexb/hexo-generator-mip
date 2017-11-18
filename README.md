@@ -1,6 +1,6 @@
 # hexo-generator-mip
 
-统一处理 Hexo 模板中的 MIP 标签
+统一处理 Hexo 模板中的 MIP 标签，需要 `<html>` 属性中包含： `mip` 字段，如： `<html mip>` ，否则将忽略处理。
 
 [![NPM Version](https://img.shields.io/npm/v/hexo-generator-mip.svg)](https://www.npmjs.com/package/hexo-generator-mip)
 [![NPM Downloads](https://img.shields.io/npm/dm/hexo-generator-mip.svg)](https://www.npmjs.com/package/hexo-generator-mip)
@@ -22,12 +22,13 @@ mip:
   key: value
 ```
 
-配置名称 | 描述 | 默认值
---- | --- | ---
-`mip.enable` | 是否开启 MIP 规范处理 | `false`
-`mip.css` | 指定加载的样式文件，以 `主题目录/souce/css/` 为基础路径<br>如果没有配置，默认加载 `souce/css/**/*.css` 忽略以 `_` 开头的文件 | `''`
-`mip.cssmin` | 是否开启样式压缩 | `true`
-`mip.canonical` | 替换 canonical 地址 | `''`
+配置名称 | 描述 | 类型 | 默认值
+--- | --- | --- | ---
+`mip.enable` | 是否开启 MIP 规范处理 | boolean | `false`
+`mip.css` | 指定加载的样式文件，以 `主题目录/souce/css/` 为基础路径 | array | `''`
+`mip.cssmin` | 是否开启样式压缩 | boolean | `true`
+`mip.canonical` | 替换 canonical 地址 | string | `''`
+`mip.exclude` | 忽略的链接数据，通常这些链接不是 MIP 页面（ `v0.5.0` 新增） | array | `[]`
 
 ### 处理 css
 
@@ -70,7 +71,7 @@ mip:
 
 > [MIP a 标签文档](https://www.mipengine.org/examples/mip-extensions/mip-link.html)
 
-统一替换页面中的 `<a>` 标签，如果是当前网站的，则添加 `data-type="mip"` 。
+统一替换页面中的 `<a>` 标签，如果是当前网站的，则添加 `data-type="mip"` 。如果链接在 `mip.exclude` 中声明，将被忽略。
 
 ### 处理 img 链接
 
