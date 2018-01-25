@@ -67,6 +67,13 @@ mip:
 
 > 注意：使用该方式加载样式后，将忽略 **#1 默认全部加载** 和 **#2 主动调用 mipcss 函数加载指定文件** ，因为页面已经存在 `<style mip-custom>` 标签。
 
+#### 4. 自动合并页面中的 `<style>` 标签 - v0.6.0 新增
+
+对于页面中存在的多个 `<style>` 标签将自动合并并插入到 `<head>` 标签中的 `<style mip-custom>` 标签中，分2种情况：
+
+1. 页面中已经存在 `<style mip-custom>` 标签（可以是调用 `{{ mipcss(file1 [, file2]) }}` 生成，也可以是自己手动写入），将把页面中提取的其他 `<style>` 依次**追加**到原 `<style mip-custom>` 标签内。
+2. 页面中不存在 `<style mip-custom>` 标签，自动根据 `1. 默认全部加载` 或者 `2. 配置加载文件的名单` 加载，并把页面中提取的其他 `<style>` 依次**追加**到最后。
+
 ### 处理 a 标签
 
 > [MIP a 标签文档](https://www.mipengine.org/examples/mip-extensions/mip-link.html)

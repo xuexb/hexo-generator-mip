@@ -265,10 +265,9 @@ describe('style.js', function () {
             expect(callback(head)).to.equal([
                 '<html mip>',
                 '<head>',
-                '<style mip-custom>body {height: 0;}</style>',
+                '<style mip-custom>body {height: 0;}body {}</style>',
                 '</head>',
                 '<body>',
-                '<style mip-custom>body {}</style>',
                 '</body>'
             ].join(''));
         });
@@ -473,6 +472,85 @@ describe('style.js', function () {
             });
         });
 
+        describe('multiple `<style>` tag', function () {
+            it('<head> not has <style mip-custom>', function () {
+                register({
+                    theme_dir: mockBase
+                });
+
+                var head = [
+                    '<html mip>',
+                    '<head>',
+                    '</head>',
+                    '<body>',
+                        '<style>.demo {}</style>',
+                        '<style>.demo2 {}</style>',
+                    '</body>'
+                ].join('');
+
+                expect(callback(head)).to.equal([
+                    '<html mip>',
+                    '<head>',
+                        '<style mip-custom>.demo {}.demo2 {}</style>',
+                    '</head>',
+                    '<body>',
+                    '</body>'
+                ].join(''));
+            });
+
+            it('<head> has <style mip-custom>', function () {
+                register({
+                    theme_dir: mockBase
+                });
+
+                var head = [
+                    '<html mip>',
+                    '<head>',
+                        '<style mip-custom>body {}</style>',
+                    '</head>',
+                    '<body>',
+                        '<style>.demo {}</style>',
+                        '<style>.demo2 {}</style>',
+                    '</body>'
+                ].join('');
+
+                expect(callback(head)).to.equal([
+                    '<html mip>',
+                    '<head>',
+                        '<style mip-custom>body {}.demo {}.demo2 {}</style>',
+                    '</head>',
+                    '<body>',
+                    '</body>'
+                ].join(''));
+            });
+
+            it('<head> has <style mip-officialrelease>', function () {
+                register({
+                    theme_dir: mockBase
+                });
+
+                var head = [
+                    '<html mip>',
+                    '<head>',
+                        '<style mip-officialrelease>body {}</style>',
+                    '</head>',
+                    '<body>',
+                        '<style>.demo {}</style>',
+                        '<style>.demo2 {}</style>',
+                    '</body>'
+                ].join('');
+
+                expect(callback(head)).to.equal([
+                    '<html mip>',
+                    '<head>',
+                        '<style mip-officialrelease>body {}</style>',
+                        '<style mip-custom>.demo {}.demo2 {}</style>',
+                    '</head>',
+                    '<body>',
+                    '</body>'
+                ].join(''));
+            });
+        });
     });
 
 });
